@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     environment {
-    IMAGE_TAG = "${BUILD_NUMBER}"
+    // IMAGE_TAG = "${BUILD_NUMBER}"
     APP_NAME = "gitops-argocd_ci"
      }
 
