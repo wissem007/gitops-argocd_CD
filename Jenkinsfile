@@ -42,7 +42,7 @@ pipeline{
                     steps{
                         script {
                             sh '''cat deployment.yml
-sed -i 's+wissem007/python.*+wissem007/python:${DOCKERTAG}+g' deployment.yaml
+sed -i 's#${APP_NAME}.*#${APP_NAME}:${DOCKERTAG}#g' deployment.yaml
 cat deployment.yml
 '''
                          }
