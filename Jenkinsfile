@@ -1,13 +1,7 @@
 pipeline{
     agent any
 
-        environment{
-       
-        IMAGE_TAG = "${BUILD_NUMBER}"
-        APP_NAME = "gitops-argocd_ci"
-   
-     
-    }
+  
 
     stages{
         stage("clenup workspace"){
@@ -33,6 +27,10 @@ pipeline{
                     
                 }
                     stage("Update kubernates deploy file"){
+                        environment {
+                        IMAGE_TAG = "${BUILD_NUMBER}"
+                        APP_NAME = "gitops-argocd_ci"
+                     }
                     steps{
                         script {
                             sh '''cat deployment.yml
