@@ -34,7 +34,7 @@ pipeline{
         stage("Print BUILD_NUMBER") {
              steps {
                 script {
-                     echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
+                     echo "DOCKERTAG"
                 }
         }
         }
