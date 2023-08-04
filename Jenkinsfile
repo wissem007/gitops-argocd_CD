@@ -33,7 +33,7 @@ pipeline{
              steps {
                 script {
                     //sed -i "s#${APP_NAME}.*#${APP_NAME}:${IMAGE_TAG}#g" deployment.yml
-                     echo "DOCKERTAG"
+                     echo "${DOCKERTAG}"
                 }
         }
         }
@@ -42,7 +42,7 @@ pipeline{
                     steps{
                         script {
                             sh '''cat deployment.yml
-sed -i 's+wissem007/gitops-argocd_ci.*+wissem007/gitops-argocd_ci:${DOCKERTAG}+g' deployment.yml
+sed -i 's+wissem007/gitops-argocd_ci.*+wissem007/gitops-argocd_ci:'${DOCKERTAG}'+g' deployment.yml
 cat deployment.yml
 '''
                          }
@@ -60,7 +60,7 @@ cat deployment.yml
                         sh '''git config --global user.email "alouiwiss@gmail.com"
 git config --global user.name "wissem007" 
 git add deployment.yml
-git commit -m \'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}\'
+git commit -m \'Done by Jenkins Job changemanifest: '${DOCKERTAG}'\'
 
 '''
       withCredentials([gitUsernamePassword(credentialsId: 'jenkins_github', gitToolName: 'Default')]) {
