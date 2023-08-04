@@ -1,6 +1,13 @@
 pipeline{
     agent any
 
+        environment{
+       
+        APP_NAME = "gitops-argocd_ci"
+   
+     
+    }
+
     stages{
         stage("clenup workspace"){
             steps{
