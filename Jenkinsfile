@@ -41,11 +41,10 @@ pipeline{
                 steps {
                     script {
                  dir('dev') {
-                sh '''
-                cat deployment.yml
-                sed -i 's+wissem007/gitops-argocd_ci.*+wissem007/gitops-argocd_ci:'${DOCKERTAG}'+g' deployment.yml
-                cat deployment.yml
-                '''
+                sh ''' cat deployment.yml
+sed -i 's+wissem007/gitops-argocd_ci.*+wissem007/gitops-argocd_ci:'${DOCKERTAG}'+g' deployment.yml
+cat deployment.yml
+'''
             }
         }
          }
