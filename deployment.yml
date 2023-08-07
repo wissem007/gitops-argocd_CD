@@ -3,8 +3,8 @@ kind: Deployment
 metadata:
   name: flask-app-deploy
 spec:
+  replicas: 2 # Update the number of replicas here
   selector:
-    replicas: 2
     matchLabels:
       app: flask-app
   template:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flask-app-container
-        image: wissem007/gitops-argocd_ci:83
+        image: wissem007/gitops-argocd_ci:84
         resources:
           limits:
             memory: "128Mi"
