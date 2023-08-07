@@ -37,6 +37,14 @@ pipeline{
                 }
         }
         }
+
+        stage("Debug workspace") {
+         steps {
+        script {
+            sh 'pwd'
+        }
+         }
+        }
         stage("Update kubernates deploy file") {
                 steps {
                     script {
