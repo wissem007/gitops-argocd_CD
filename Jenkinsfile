@@ -42,6 +42,8 @@ pipeline{
          steps {
         script {
             sh 'pwd'
+            sh 'ls dev'
+            sh 'ls dev/deployment.yaml'
         }
          }
         }
@@ -49,9 +51,9 @@ pipeline{
                 steps {
                     script {
                  dir('dev') {
-                sh ''' cat deployment.yml
-sed -i 's+wissem007/gitops-argocd_ci.*+wissem007/gitops-argocd_ci:'${DOCKERTAG}'+g' deployment.yml
-cat deployment.yml
+                sh ''' cat deployment.yaml
+sed -i 's+wissem007/gitops-argocd_ci.*+wissem007/gitops-argocd_ci:'${DOCKERTAG}'+g' deployment.yaml
+cat deployment.yaml
 '''
             }
         }
@@ -68,7 +70,7 @@ cat deployment.yml
                         //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
                         sh '''git config --global user.email "alouiwiss@gmail.com"
 git config --global user.name "wissem007" 
-git add deployment.yml
+git add dev/deployment.yaml
 git commit -m \'Done by Jenkins Job changemanifest: '${DOCKERTAG}'\'
 
 '''
